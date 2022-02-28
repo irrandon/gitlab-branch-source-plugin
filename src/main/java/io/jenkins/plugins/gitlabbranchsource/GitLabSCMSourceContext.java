@@ -49,6 +49,8 @@ public class GitLabSCMSourceContext
 
     private String buildStatusNameCustomPart = "";
 
+    private boolean buildStatusNameOverwrite;
+
     public GitLabSCMSourceContext(@CheckForNull SCMSourceCriteria criteria,
         @NonNull SCMHeadObserver observer) {
         super(criteria, observer);
@@ -127,6 +129,8 @@ public class GitLabSCMSourceContext
     public final String getBuildStatusNameCustomPart() {
         return buildStatusNameCustomPart;
     }
+
+    public boolean getBuildStatusNameOverwrite() { return buildStatusNameOverwrite; }
 
     @NonNull
     public GitLabSCMSourceContext wantBranches(boolean include) {
@@ -226,6 +230,11 @@ public class GitLabSCMSourceContext
     @NonNull
     public final GitLabSCMSourceContext withBuildStatusNameCustomPart(final String buildStatusNameCustomPart) {
         this.buildStatusNameCustomPart = Util.fixNull(buildStatusNameCustomPart);
+        return this;
+    }
+
+    public final GitLabSCMSourceContext withBuildStatusNameOverwrite(final Boolean buildStatusNameOverwrite) {
+        this.buildStatusNameOverwrite = buildStatusNameOverwrite;
         return this;
     }
 
